@@ -1,6 +1,5 @@
 import { validate, ValidationError } from "class-validator";
 import { getRepository, Repository } from "typeorm";
-import { StudentDTO } from "../dto/StudentDTO";
 import { Student } from "../entities/Student";
 import { IStudentDTO } from "../interfaces/dto/IStudentDTO";
 import { IStudent } from "../interfaces/entities/IStudent";
@@ -35,6 +34,7 @@ export class UpdateStudentUseCase implements IUseCase {
   /**
    *
    *
+   * @param {string} id
    * @param {IStudentDTO} dto
    * @return {*}  {(Promise<Student | ValidationError[]>)}
    * @memberof UpdateStudentUseCase
