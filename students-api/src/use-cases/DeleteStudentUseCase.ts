@@ -19,7 +19,7 @@ export class DeleteStudentUseCase implements IUseCase {
    * @type {Repository<IStudent>}
    * @memberof DeleteStudentUseCase
    */
-  private _repository: Repository<IStudent> = getRepository(Student)
+  private _repository: Repository<IStudent>;
 
   /**
    *
@@ -29,6 +29,15 @@ export class DeleteStudentUseCase implements IUseCase {
    */
   public repository(value: Repository<IStudent>) {
     this._repository = value;
+  }
+
+  /**
+   * Creates an instance of DeleteStudentUseCase.
+   * @param {Repository<IStudent>} [repository=getRepository(Student)]
+   * @memberof DeleteStudentUseCase
+   */
+  constructor(repository: Repository<IStudent> = getRepository(Student)) {
+    this._repository = repository;
   }
 
   /**
@@ -47,7 +56,7 @@ export class DeleteStudentUseCase implements IUseCase {
       error.property = 'Student';
 
       error.constraints = {
-        nullable: 'Student not find',
+        nullable: 'Student not found',
       };
 
       return [error];

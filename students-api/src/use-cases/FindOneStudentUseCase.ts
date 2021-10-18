@@ -19,7 +19,7 @@ export class FindOneStudentUseCase implements IUseCase {
    * @type {Repository<IStudent>}
    * @memberof FindOneStudentUseCase
    */
-  private _repository: Repository<IStudent> = getRepository(Student)
+  private _repository: Repository<IStudent>;
 
   /**
    *
@@ -28,6 +28,15 @@ export class FindOneStudentUseCase implements IUseCase {
    */
   public set repository(value: Repository<IStudent>) {
     this._repository = value;
+  }
+
+  /**
+   * Creates an instance of FindOneStudentUseCase.
+   * @param {Repository<IStudent>} [repository=getRepository(Student)]
+   * @memberof FindOneStudentUseCase
+   */
+  constructor(repository: Repository<IStudent> = getRepository(Student)) {
+    this._repository = repository;
   }
 
   /**

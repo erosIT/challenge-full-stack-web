@@ -20,7 +20,7 @@ export class UpdateStudentUseCase implements IUseCase {
    * @type {Repository<IStudent>}
    * @memberof UpdateStudentUseCase
    */
-  private _repository: Repository<IStudent> = getRepository(Student)
+  private _repository: Repository<IStudent>;
 
   /**
    *
@@ -29,6 +29,15 @@ export class UpdateStudentUseCase implements IUseCase {
    */
   public set repository(value: Repository<IStudent>) {
     this._repository = value;
+  }
+
+  /**
+   * Creates an instance of UpdateStudentUseCase.
+   * @param {Repository<IStudent>} [repository=getRepository(Student)]
+   * @memberof UpdateStudentUseCase
+   */
+  constructor(repository: Repository<IStudent> = getRepository(Student)) {
+    this._repository = repository;
   }
 
   /**
@@ -47,7 +56,7 @@ export class UpdateStudentUseCase implements IUseCase {
 
       error.property = 'Student';
       error.constraints = {
-        nullable: 'Student not find',
+        nullable: 'Student not found',
       };
 
       return [error];

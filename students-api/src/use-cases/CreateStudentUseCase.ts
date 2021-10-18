@@ -38,7 +38,7 @@ export class CreateStudentUseCase implements IUseCase {
    * @type {Repository<IStudent>}
    * @memberof CreateStudentUseCase
    */
-  private _repository: Repository<IStudent> = getRepository(Student)
+  private _repository: Repository<IStudent>;
 
   /**
    *
@@ -47,6 +47,15 @@ export class CreateStudentUseCase implements IUseCase {
    */
   public set repository(value: Repository<IStudent>) {
     this._repository = value;
+  }
+
+  /**
+   * Creates an instance of CreateStudentUseCase.
+   * @param {*} [repository=getRepository(Student)]
+   * @memberof CreateStudentUseCase
+   */
+  constructor(repository: Repository<IStudent> = getRepository(Student)) {
+    this._repository = repository;
   }
 
   /**
@@ -67,6 +76,6 @@ export class CreateStudentUseCase implements IUseCase {
       return errors;
     }
 
-    return this._repository.save(studentDTO);
+    return this._repository.save(this._entity);
   }
 }
