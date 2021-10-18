@@ -20,8 +20,6 @@
         <v-toolbar flat>
           <v-spacer></v-spacer>
           <v-btn
-            v-bind="attrs"
-            v-on="on"
             elevation="2"
             color="primary"
             fixed

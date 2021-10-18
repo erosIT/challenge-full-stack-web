@@ -2,7 +2,7 @@
   <v-form ref="form" v-model="valid">
     <v-container>
       <v-row>
-        <v-col cols="12" v-if="presenter.id">
+        <v-col cols="12" v-if="!!presenter.id">
           <v-text-field
             disabled
             v-model="presenter.ra"
@@ -33,7 +33,7 @@
 
         <v-col cols="12" md="4">
           <v-text-field
-            :disabled="presenter.id"
+            :disabled="!!presenter.id"
             v-model="presenter.cpf"
             :rules="cpfRules"
             label="CPF"
