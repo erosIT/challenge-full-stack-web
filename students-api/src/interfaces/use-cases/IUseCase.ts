@@ -12,5 +12,6 @@ export interface IUseCase {
    * @return {*}  {*}
    * @memberof IUseCase
    */
+  // eslint-disable-next-line no-unused-vars
   run(params: any): any
 }

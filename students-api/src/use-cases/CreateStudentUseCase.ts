@@ -1,9 +1,9 @@
-import { validate, ValidationError } from "class-validator";
-import { getRepository, Repository } from "typeorm";
-import { Student } from "../entities/Student";
-import { IStudentDTO } from "../interfaces/dto/IStudentDTO";
-import { IStudent } from "../interfaces/entities/IStudent";
-import { IUseCase } from "../interfaces/use-cases/IUseCase";
+import { validate, ValidationError } from 'class-validator';
+import { getRepository, Repository } from 'typeorm';
+import { Student } from '../entities/Student';
+import { IStudentDTO } from '../interfaces/dto/IStudentDTO';
+import { IStudent } from '../interfaces/entities/IStudent';
+import { IUseCase } from '../interfaces/use-cases/IUseCase';
 
 /**
  *
@@ -53,7 +53,7 @@ export class CreateStudentUseCase implements IUseCase {
    *
    *
    * @param {IStudentDTO} studentDTO
-   * @return {*} 
+   * @return {*}
    * @memberof CreateStudentUseCase
    */
   public async run(studentDTO: IStudentDTO): Promise<ValidationError[] | IStudent> {
@@ -61,12 +61,12 @@ export class CreateStudentUseCase implements IUseCase {
     this._entity.cpf = studentDTO.cpf;
     this._entity.email = studentDTO.email;
 
-    const errors = await validate(this._entity)
+    const errors = await validate(this._entity);
 
     if (errors.length > 0) {
-      return errors
+      return errors;
     }
 
-    return await this._repository.save(studentDTO);
+    return this._repository.save(studentDTO);
   }
 }

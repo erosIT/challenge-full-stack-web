@@ -27,7 +27,7 @@ export interface IStudent {
    * @type {Date}
    * @memberof IStudent
    */
-  created_at: Date;
+  createdAt: Date;
 
   /**
    *
@@ -35,7 +35,7 @@ export interface IStudent {
    * @type {Date}
    * @memberof IStudent
    */
-  updated_at: Date;
+  updatedAt: Date;
 
   /**
    *

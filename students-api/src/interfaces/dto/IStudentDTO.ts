@@ -1,4 +1,4 @@
-import { IDataTransferObject } from "./IDataTransferObject";
+import { IDataTransferObject } from './IDataTransferObject';
 
 /**
  *
@@ -6,7 +6,7 @@ import { IDataTransferObject } from "./IDataTransferObject";
  * @export
  * @class IStudentDTO
  */
- export interface IStudentDTO extends IDataTransferObject {
+export interface IStudentDTO extends IDataTransferObject {
   /**
    *
    *

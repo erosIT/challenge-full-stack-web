@@ -1,8 +1,8 @@
-import { ValidationError } from "class-validator";
-import { getRepository, Repository } from "typeorm";
-import { Student } from "../entities/Student";
-import { IStudent } from "../interfaces/entities/IStudent";
-import { IUseCase } from "../interfaces/use-cases/IUseCase";
+import { ValidationError } from 'class-validator';
+import { getRepository, Repository } from 'typeorm';
+import { Student } from '../entities/Student';
+import { IStudent } from '../interfaces/entities/IStudent';
+import { IUseCase } from '../interfaces/use-cases/IUseCase';
 
 /**
  *
@@ -35,23 +35,24 @@ export class DeleteStudentUseCase implements IUseCase {
    *
    *
    * @param {string} id
-   * @return {*} 
+   * @return {*}
    * @memberof DeleteStudentUseCase
    */
   async run(id: string): Promise<ValidationError[] | void> {
-    const res = await this._repository.delete(id)
+    const res = await this._repository.delete(id);
 
     if (res.affected === 0) {
-      const error = new ValidationError()
+      const error = new ValidationError();
 
-      error.property = 'Student',
+      error.property = 'Student';
+
       error.constraints = {
-        nullable: 'Student not find'
-      }
+        nullable: 'Student not find',
+      };
 
-      return [ error ]
+      return [error];
     }
 
-    return;
+    return Promise.resolve();
   }
 }

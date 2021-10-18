@@ -1,8 +1,8 @@
-import { isUUID, ValidationError } from "class-validator";
-import { getRepository, Repository } from "typeorm";
-import { Student } from "../entities/Student";
-import { IStudent } from "../interfaces/entities/IStudent";
-import { IUseCase } from "../interfaces/use-cases/IUseCase";
+import { isUUID, ValidationError } from 'class-validator';
+import { getRepository, Repository } from 'typeorm';
+import { Student } from '../entities/Student';
+import { IStudent } from '../interfaces/entities/IStudent';
+import { IUseCase } from '../interfaces/use-cases/IUseCase';
 
 /**
  *
@@ -39,16 +39,16 @@ export class FindOneStudentUseCase implements IUseCase {
    */
   async run(id: string): Promise<Student | ValidationError[]> {
     if (!isUUID(id)) {
-      const error = new ValidationError()
+      const error = new ValidationError();
 
-      error.property = 'Student',
+      error.property = 'Student';
       error.constraints = {
-        nullable: 'Id is must be uuid'
-      }
+        nullable: 'Id is must be uuid',
+      };
 
-      return [ error ]
+      return [error];
     }
 
-    return await this._repository.findOne(id);
+    return this._repository.findOne(id);
   }
 }

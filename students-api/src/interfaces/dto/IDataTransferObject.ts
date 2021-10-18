@@ -12,5 +12,6 @@ export interface IDataTransferObject {
    * @return {*}  {this}
    * @memberof IDataTransferObject
    */
+  // eslint-disable-next-line no-unused-vars
   fromRequest(request: Record<string, any>): this
 }

@@ -1,7 +1,7 @@
-import express, { Application } from 'express'
-import cors from 'cors'
+import express, { Application } from 'express';
+import cors from 'cors';
 
-import routes from '../routes'
+import routes from '../routes';
 
 /**
  *
@@ -15,11 +15,11 @@ class App {
    * Creates an instance of App.
    * @memberof App
    */
-  constructor () {
-    this.express = express()
+  constructor() {
+    this.express = express();
 
-    this.middlewares()
-    this.routes()
+    this.middlewares();
+    this.routes();
   }
 
   /**
@@ -28,9 +28,9 @@ class App {
    * @private
    * @memberof App
    */
-  private middlewares (): void {
-    this.express.use(express.json())
-    this.express.use(cors())
+  private middlewares(): void {
+    this.express.use(express.json());
+    this.express.use(cors());
   }
 
   /**
@@ -39,9 +39,9 @@ class App {
    * @private
    * @memberof App
    */
-  private routes (): void {
-    this.express.use('/api', routes)
+  private routes(): void {
+    this.express.use('/api', routes);
   }
 }
 
-export default new App().express
+export default new App().express;

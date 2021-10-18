@@ -1,13 +1,15 @@
-import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
+import { ValidatorConstraint, ValidatorConstraintInterface } from 'class-validator';
 import { cpfValidator } from '../utils';
 
 @ValidatorConstraint({ name: 'isValidCpf', async: false })
 export class IsValidCpf implements ValidatorConstraintInterface {
-  validate(text: string, args: ValidationArguments) {
-    return cpfValidator(text)
+  // eslint-disable-next-line class-methods-use-this
+  validate(text: string) {
+    return cpfValidator(text);
   }
 
-  defaultMessage(args: ValidationArguments) {
+  // eslint-disable-next-line class-methods-use-this
+  defaultMessage() {
     return 'Invalid CPF parameter';
   }
 }

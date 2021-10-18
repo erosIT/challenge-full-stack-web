@@ -1,3 +1,3 @@
-import { Serializer } from "jsonapi-serializer";
+import { Serializer } from 'jsonapi-serializer';
 
 export interface IStudentTransform extends Serializer {}

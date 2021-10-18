@@ -1,4 +1,4 @@
-import { IStudentDTO } from "../interfaces/dto/IStudentDTO";
+import { IStudentDTO } from '../interfaces/dto/IStudentDTO';
 
 /**
  *
@@ -55,7 +55,7 @@ export class StudentDTO implements IStudentDTO {
    * @memberof StudentDTO
    */
   public fromRequest(body: Record<string, any>): this {
-    this.id = body.id
+    this.id = body.id;
     this.ra = body.ra;
     this.name = body.name;
     this.email = body.email;

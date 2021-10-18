@@ -1,5 +1,5 @@
-import { Serializer, Transform } from 'jsonapi-serializer'
-import { IStudentTransform } from '../interfaces/transforms/IStudentTransform'
+import { Serializer } from 'jsonapi-serializer';
+import { IStudentTransform } from '../interfaces/transforms/IStudentTransform';
 
 /**
  *
@@ -9,7 +9,7 @@ import { IStudentTransform } from '../interfaces/transforms/IStudentTransform'
  * @extends {Serializer}
  */
 export class StudentTransform extends Serializer implements IStudentTransform {
-  constructor({ count, size, number }: any ) {
+  constructor({ count, size, number }: any) {
     super('students', {
       id: 'id',
       attributes: [
@@ -24,8 +24,8 @@ export class StudentTransform extends Serializer implements IStudentTransform {
           total: count,
           current_page: number,
           per_page: size,
-        }
-      }
-    })
+        },
+      },
+    });
   }
 }
