@@ -9,7 +9,7 @@ import { IStudentTransform } from '../interfaces/transforms/IStudentTransform'
  * @extends {Serializer}
  */
 export class StudentTransform extends Serializer implements IStudentTransform {
-  constructor(total?: number) {
+  constructor({ count, size, number }: any ) {
     super('students', {
       id: 'id',
       attributes: [
@@ -19,7 +19,12 @@ export class StudentTransform extends Serializer implements IStudentTransform {
         'email',
       ],
       meta: {
-        total,
+        pagination: {
+          count,
+          total: count,
+          current_page: number,
+          per_page: size,
+        }
       }
     })
   }
