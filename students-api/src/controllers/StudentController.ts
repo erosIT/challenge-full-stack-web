@@ -30,7 +30,7 @@ export class StudentController {
         const { page } = request.query as any;
 
         const number = Number(page ? page.number : 1);
-        const limit = Number(page ? page.limit : 25);
+        const size = Number(page ? page.size : 25);
 
         if (number <= 0) {
             return response.status(422).send(new JsonError({
@@ -40,17 +40,17 @@ export class StudentController {
             }))
         }
 
-        if (limit <= 0) {
+        if (size <= 0) {
             return response.status(422).send(new JsonError({
                 code: '422',
                 title: 'Parameter is invalid',
-                detail: 'The page[limit] parameter must be a number greater than 1'
+                detail: 'The page[size] parameter must be a number greater than 1'
             }))
         }
 
-        const [students, count] = await new FindAllStudentUseCase().run({ number, limit })
+        const [students, count] = await new FindAllStudentUseCase().run({ number, size })
 
-        const parsed = new StudentTransform(count).serialize(students)
+        const parsed = new StudentTransform({ count, size, number }).serialize(students)
         return response.status(200).send(parsed)
     }
 
@@ -78,7 +78,7 @@ export class StudentController {
             }))
         }
 
-        const parsed = new StudentTransform().serialize(result)
+        const parsed = new StudentTransform({}).serialize(result)
         return response.status(200).send(parsed)
     }
 
@@ -109,7 +109,7 @@ export class StudentController {
             }))
         }
         
-        const parsed = new StudentTransform().serialize(result)
+        const parsed = new StudentTransform({}).serialize(result)
         return response.status(201).send(parsed)
     }
 
@@ -125,7 +125,7 @@ export class StudentController {
         const { body } = request;
         const { id } = request.params
 
-        const dto = new StudentDTO().fromRequest(body)
+        const dto = new StudentDTO().fromRequest({ id, ...body })
 
         const result = await new UpdateStudentUseCase().run(dto)
 
@@ -141,7 +141,7 @@ export class StudentController {
             }))
         }        
 
-        const parsed = new StudentTransform().serialize(result)
+        const parsed = new StudentTransform({}).serialize(result)
         return response.status(201).send(parsed)
     }
 
